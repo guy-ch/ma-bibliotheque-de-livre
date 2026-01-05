@@ -1,0 +1,196 @@
+* {
+  font-size: 14px;
+  font-family: Verdana, Tahoma, sans-serif;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-style: normal;
+}
+
+/* menu de naviogation */
+#navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: rgb(4, 4, 73);
+  border-bottom: 1px rgb(4, 4, 73) solid;
+  color: gainsboro;
+}
+
+#navigation img {
+  height: 50px;
+}
+
+#menu {
+  display: flex;
+}
+
+#menu .list ul {
+  display: flex;
+  padding-right: 5rem;
+}
+
+#menu .list ul li {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  list-style: none;
+}
+
+#menu .list ul li a {
+  text-decoration: none;
+  color: gainsboro;
+  font-size: 16px;
+}
+
+#menu .rech i {
+  text-decoration: none;
+  color: gainsboro;
+  font-size: 16px;
+}
+
+#menu .rech {
+  padding-right: 2rem;
+}
+/* main */
+main {
+  color: #272727;
+}
+/* section acceuil */
+
+
+
+#acceuil h1 {
+  font-size: 25px;
+  color: rgb(4, 4, 73);
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  padding-left: 10rem;
+}
+
+#acceuil hr {
+  margin-left: 10rem;
+  margin-right: 69rem;
+}
+
+#acceuil .ftitre {
+  padding-left: 10rem;
+  padding-top: 1rem;
+}
+
+#acceuil .ftitre .texte{
+  font-size: 20px;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  
+}
+
+#acceuil .ftitre a {
+    padding: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+#acceuil .ftitre button {
+  background-color: darkgreen;
+  padding: 5px;
+  margin-bottom: 5rem;
+}
+
+/* guide d'utilisation */
+
+ .grandeligne{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+ .grandeligne h2{
+    white-space: nowrap;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(4, 4, 73);
+}
+
+ .grandeligne .ligne {
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    min-width: 50px;
+    margin-left: 8rem;
+}
+
+ .grandeligne .ligne1 {
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    min-width: 50px;
+    margin-right: 8rem;
+}
+
+.flotte{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 4rem ;
+    padding-bottom: 4rem;
+   
+}
+
+.flotte .guidepart1{
+    background-color:whitesmoke;
+    text-align: center;
+    padding: 20px 2px 50px 2px;
+}
+
+.flotte .guidepart1 i{
+    font-size: 5rem;
+}
+
+.flotte .guidepart1 img{
+    width: 5rem;
+    height: 5rem;
+}
+/* .fa-lock{
+    color:rgb(4, 4, 73) ;
+} */
+
+.flotte .guidepart1 h4{
+    font-size: 18px; 
+    padding: 10px;
+}
+
+.flotte .guidepart1 P{
+    font-weight: bold;
+    white-space: pre-line;
+    padding: 0 10px;
+}
+
+/* footer */
+
+footer{
+     margin-top: 4rem;
+    background-color: rgb(4, 4, 73) ;
+    text-align: center;
+    padding: 20px 20px 50px 20px;
+
+}
+
+
+footer p{
+   
+    font-size: 18px;
+     padding-top: 20px;
+    color : #fff;
+}
+
+
+
+/* results.php */
+
+
+
+
