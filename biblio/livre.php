@@ -49,7 +49,8 @@ body { font-family: Arial, sans-serif; margin: 20px; }
             <li><a href="index.php">Acceuil</a></li>
             <li><a href="livre.php">Livres</a></li>
             <li><a href="inscription.php">Inscription</a></li>
-            <li><a href="#">Contacts</a></li>
+            <li><a href="contact.php">Contacts</a></li>
+            <li><a href="wishlist.php">Ma Liste</a></li>
            </ul>
         </div>
           
@@ -68,7 +69,7 @@ body { font-family: Arial, sans-serif; margin: 20px; }
     <main>
  
 
-<h2>📚 UNILIBRARY</h2>
+<h2> UNILIBRARY</h2>
 
 <!-- MENU DES CATÉGORIES -->
 <div class="categories-menu">
@@ -96,9 +97,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     // Nom de la catégorie pour affichage
     $resCat = mysqli_query($conn, "SELECT nom FROM cathegorie WHERE id = $id_categorie");
     $categorie = mysqli_fetch_assoc($resCat);
-    echo "<h3>📂 Catégorie : {$categorie['nom']}</h3>";
+    echo "<h3> Catégorie : {$categorie['nom']}</h3>";
 } else {
-    echo "<h3>📚 Tous les livres</h3>";
+    echo "<h3> Tous les livres</h3>";
 }
 
 // Requête avec DISTINCT pour éviter les doublons

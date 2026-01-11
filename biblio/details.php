@@ -159,7 +159,7 @@ body{
             <li><a href="index.php">Acceuil</a></li>
             <li><a href="livre.php">Livres</a></li>
             <li><a href="inscription.php">Inscription</a></li>
-            <li><a href="#">Contacts</a></li>
+            <li><a href="contact.php">Contacts</a></li>
            </ul>
         </div>
           
@@ -209,13 +209,13 @@ body{
     <div class="actions">
         <form method="post" action="ajouter_liste.php">
             <input type="hidden" name="id_livre" value="<?= $livre['id'] ?>">
-            <button type="submit" class="btn">➕ Ajouter à ma liste</button>
+            <button type="submit" class="btn"> Ajouter à ma liste</button>
         </form>
 
-        <a href="wishlist.php" class="btn" style="background:#0066cc;">📖 Ma liste</a>
+        <a href="wishlist.php" class="btn" style="background:#0066cc;"> Ma liste</a>
     </div>
 
-    <a href="livre.php" class="back">⬅ Retour aux livres</a>
+    <a href="livre.php" class="back"> Retour aux livres</a>
 </div>
 
 </body>

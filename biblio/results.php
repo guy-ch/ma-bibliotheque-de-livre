@@ -130,7 +130,7 @@ h2{
             <li><a href="index.php">Acceuil</a></li>
             <li><a href="livre.php">Livres</a></li>
             <li><a href="inscription.php">Inscription</a></li>
-            <li><a href="#">Contacts</a></li>
+            <li><a href="contact.php">Contacts</a></li>
            </ul>
         </div>
           
@@ -149,7 +149,7 @@ h2{
 
 <div class="container">
 
-<h2>🔎 Résultats pour : <em><?= htmlspecialchars($motCle) ?></em></h2>
+<h2> Résultats pour : <em><?= htmlspecialchars($motCle) ?></em></h2>
 
 <?php if (mysqli_num_rows($result) > 0): ?>
     <?php while ($livre = mysqli_fetch_assoc($result)): 
@@ -177,7 +177,7 @@ h2{
     <p style="text-align:center;">Aucun livre trouvé.</p>
 <?php endif; ?>
 
-<a class="back" href="index.php">⬅ Retour à l'accueil</a>
+<a class="back" href="index.php"> Retour à l'accueil</a>
 
 </div>
 

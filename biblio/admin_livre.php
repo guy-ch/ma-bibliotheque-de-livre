@@ -23,7 +23,7 @@ $res = mysqli_query($conn, $sql);
 <link rel="stylesheet" href="biblio1.css">
 <style>
 body{font-family:Arial,sans-serif; padding:20px; background:#f4f4f4;}
-h2{text-align:center; color:#0066cc; margin-bottom:20px;}
+h1{text-align:center; color:#0066cc; margin-bottom:20px; font-size:20px;}
 .table{width:100%; border-collapse:collapse; margin-bottom:30px;}
 .table th, .table td{border:1px solid #ccc; padding:10px; text-align:center;}
 .table th{background:#0066cc; color:white;}
@@ -36,9 +36,9 @@ h2{text-align:center; color:#0066cc; margin-bottom:20px;}
 </head>
 <body>
 
-<h2>📚 Gestion des Livres</h2>
+<h1> Gestion des Livres</h1>
 
-<a href="ajouter_livre.php" class="btn add-btn">➕ Ajouter un livre</a>
+<a href="ajouter_livre.php" class="btn add-btn">Ajouter un livre</a>
 
 <table class="table">
     <tr>

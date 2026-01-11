@@ -1,17 +1,16 @@
 <?php
-$server = "localhost";
+$host = "localhost";
 $user = "root";
 $password = "";
 $dbname = "unilibrary";
 
-// Connexion à la base existante
-$conn = mysqli_connect($server, $user, $password, $dbname);
+$conn = mysqli_connect($host, $user, $password, $dbname);
 
 if (!$conn) {
     die("Erreur de connexion : " . mysqli_connect_error());
 }
 
-echo "Connexion réussie !";
+// echo "Connexion réussie !";
 
 
 
@@ -182,6 +181,32 @@ $contact = "CREATE TABLE messages_contact (
 //   } else{
 //     echo "erreur de creation!" .  mysqli_error($conn);
 //    }   
+
+ $admin = "CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    mot_de_passe VARCHAR(255) NOT NULL
+)";
+
+//  if(mysqli_query($conn, $admin)){
+//     echo "table admin creer";
+//   } else{
+//     echo "erreur de creation!" .  mysqli_error($conn);
+//    }   
+
+
+
+$password = password_hash("monMotDePasseAdmin", PASSWORD_DEFAULT);
+$donnePassword="INSERT INTO admin (nom,email,mot_de_passe) VALUES ('Admin','admin@unilibrary.com','$password')";
+
+
+//  if(mysqli_query($conn, $donnePassword)){
+//     echo "ajout des donnees admin ";
+//   } else{
+//     echo "erreur d'ajout!" .  mysqli_error($conn);
+//    }   
+
 //    mysqli_close($conn);
 
 ?>

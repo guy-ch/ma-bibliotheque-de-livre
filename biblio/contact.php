@@ -8,31 +8,25 @@ $error = "";
 // TRAITEMENT DU FORMULAIRE
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    if (
-        !empty($_POST['nom']) &&
-        !empty($_POST['email']) &&
-        !empty($_POST['message'])
-    ) {
+    if (!empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['message'])) {
+
         $nom = mysqli_real_escape_string($conn, $_POST['nom']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $message = mysqli_real_escape_string($conn, $_POST['message']);
 
-        // 1️⃣ STOCKAGE EN BASE
-        $sql = "INSERT INTO messages_contact (nom, email, message)
-                VALUES ('$nom', '$email', '$message')";
-        mysqli_query($conn, $sql);
+        mysqli_query($conn, "INSERT INTO messages_contact (nom, email, message)
+                              VALUES ('$nom','$email','$message')");
 
-        // 2️⃣ ENVOI EMAIL RÉEL
-        $to = "guyaziada21@gmail.com";
-        $subject = "📩 Nouveau message - UNILIBRARY";
-        $body = "Nom : $nom\nEmail : $email\n\nMessage :\n$message";
-        $headers = "From: $email";
+        mail(
+            "guyaziada21@gmail.com",
+            "Nouveau message - UNILIBRARY",
+            "Nom : $nom\nEmail : $email\n\nMessage :\n$message",
+            "From:$email"
+        );
 
-        mail($to, $subject, $body, $headers);
-
-        $success = "✅ Message envoyé avec succès. Nous vous répondrons bientôt.";
+        $success = "Message envoyé avec succès. Nous vous répondrons bientôt.";
     } else {
-        $error = "❌ Veuillez remplir tous les champs.";
+        $error = "Veuillez remplir tous les champs.";
     }
 }
 ?>
@@ -44,28 +38,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <title>Contact | UNILIBRARY</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f4f6f8}
 
-body{
-    font-family:Arial, sans-serif;
-    background:#f4f6f8;
-}
-
-/* HEADER */
+/* ===== HEADER ===== */
 header{
-    background:white;
+    background:rgb(4,4,73);
     padding:15px 30px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    flex-wrap:wrap;
 }
 
-header h1{
-    color:#0066cc;
+header h1{color:white}
+
+/* NAV */
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
 }
 
-/* CONTENEUR */
+ul{
+   
+    padding-right:40rem ;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:gainsboro;
+    font-weight:bold;
+}
+
+nav ul li a:hover{color:#ff6600}
+
+/* ===== CONTENEUR ===== */
 .container{
     max-width:900px;
     margin:50px auto;
@@ -75,85 +83,51 @@ header h1{
     box-shadow:0 10px 25px rgba(0,0,0,0.12);
 }
 
-.container h2{
-    text-align:center;
-    margin-bottom:20px;
-    color:#0066cc;
-}
+.container h2{text-align:center;color:#0066cc;margin-bottom:20px}
 
-/* INFOS */
-.infos{
-    text-align:center;
-    margin-bottom:30px;
-    font-size:1.05em;
-}
+/* FORM */
+form{max-width:500px;margin:auto; margin-bottom: 9rem;}
 
-.infos p{
-    margin:8px 0;
-}
-
-/* FORMULAIRE */
-form{
-    max-width:500px;
-    margin:auto;
-}
-
-input, textarea{
+input,textarea{
     width:100%;
     padding:12px;
     margin-bottom:15px;
     border-radius:8px;
     border:1px solid #ccc;
-    font-size:1em;
 }
 
-textarea{
-    resize:none;
-    height:140px;
-}
+textarea{height:140px;resize:none}
 
 button{
     width:100%;
     padding:12px;
     border:none;
     border-radius:25px;
-    background:linear-gradient(135deg,#0a7d2c,#12b954);
+    background:darkgreen;
     color:white;
-    font-size:1em;
     font-weight:bold;
     cursor:pointer;
 }
 
-button:hover{
-    background:linear-gradient(135deg,#ff6600,#ff944d);
-}
+button:hover{background:#ff6600}
 
 /* MESSAGES */
-.success{
-    background:#28a745;
-    color:white;
-    padding:12px;
-    text-align:center;
-    border-radius:8px;
-    margin-bottom:20px;
-}
-
-.error{
-    background:#dc3545;
-    color:white;
-    padding:12px;
-    text-align:center;
-    border-radius:8px;
-    margin-bottom:20px;
-}
+.success{background:#28a745;color:white;padding:12px;border-radius:8px;margin-bottom:15px}
+.error{background:#dc3545;color:white;padding:12px;border-radius:8px;margin-bottom:15px}
 
 /* FOOTER */
 footer{
-    margin-top:60px;
-    padding:20px;
     background:#222;
     color:white;
     text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+    header{flex-direction:column;gap:15px}
+    nav ul{flex-direction:column;align-items:center}
 }
 </style>
 </head>
@@ -162,34 +136,34 @@ footer{
 
 <header>
     <h1>UNILIBRARY</h1>
+
+    <nav>
+        <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="livre.php">Livres</a></li>
+            <li><a href="inscription.php">Inscription</a></li>
+            <li><a href="wishlist.php">Ma liste</a></li>
+            <li><a href="contact.php">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 
 <div class="container">
-    <h2>📞 Contactez-nous</h2>
+    <h2>Contactez-nous</h2>
 
-    <div class="infos">
-        <p><strong>Email :</strong> guyaziada21@gmail.com</p>
-        <p><strong>Téléphone :</strong> 70543778 / 98448122</p>
-    </div>
-
-    <?php if($success): ?>
-        <div class="success"><?= $success ?></div>
-    <?php endif; ?>
-
-    <?php if($error): ?>
-        <div class="error"><?= $error ?></div>
-    <?php endif; ?>
+    <?php if($success): ?><div class="success"><?= $success ?></div><?php endif; ?>
+    <?php if($error): ?><div class="error"><?= $error ?></div><?php endif; ?>
 
     <form method="post">
         <input type="text" name="nom" placeholder="Votre nom" required>
         <input type="email" name="email" placeholder="Votre email" required>
         <textarea name="message" placeholder="Votre message..." required></textarea>
-        <button type="submit">📩 Envoyer le message</button>
+        <button type="submit">Envoyer</button>
     </form>
 </div>
 
 <footer>
-    <p>© 2026 BIBLIOTHÈQUE UNILIBRARY | Tous droits réservés</p>
+    © 2026 BIBLIOTHÈQUE UNILIBRARY | Tous droits réservés
 </footer>
 
 </body>

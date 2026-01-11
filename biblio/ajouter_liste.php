@@ -27,7 +27,7 @@ if (isset($_SESSION['id_lecteur'])) {
         $stmt_insert->execute();
         $stmt_insert->close();
 
-        $_SESSION['success_message'] = "Livre ajouté à votre liste de lecture ✅";
+        $_SESSION['success_message'] = "Livre ajouté à votre liste de lecture ";
     } else {
         $_SESSION['info_message'] = "Ce livre est déjà dans votre liste de lecture.";
     }

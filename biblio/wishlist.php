@@ -83,7 +83,7 @@ h2{text-align:center;font-size:2rem;margin-bottom:30px;color:#0066cc;}
             <li><a href="index.php">Acceuil</a></li>
             <li><a href="livre.php">Livres</a></li>
             <li><a href="inscription.php">Inscription</a></li>
-            <li><a href="#">Contacts</a></li>
+            <li><a href="contact.php">Contacts</a></li>
            </ul>
         </div>
           
@@ -120,7 +120,7 @@ if(isset($_SESSION['info_message'])){
 
 
 
-<h2>📚 Ma Liste de Lecture</h2>
+<h2> Ma Liste de Lecture</h2>
 
 <?php
 $categories = [];
@@ -140,7 +140,7 @@ if(empty($categories)){
 
             echo "<div class='book-card'>";
             if($livre['lu'] == 1){
-                echo "<div class='badge-lu'>LU ✅</div>";
+                echo "<div class='badge-lu'>LU </div>";
             }
             echo "<img src='$imageURL' alt='".htmlspecialchars($livre['titre'])."'>";
             echo "<h3>".htmlspecialchars($livre['titre'])."</h3>";
@@ -149,11 +149,11 @@ if(empty($categories)){
             echo "<div class='actions'>";
             echo "<form method='post' action='marquer_lu.php'>
                     <input type='hidden' name='id_livre' value='{$livre['id']}'>
-                    <button type='submit' class='btn'>✅ Marquer comme lu</button>
+                    <button type='submit' class='btn'> Marquer comme lu</button>
                   </form>";
             echo "<form method='post' action='retirer_livre.php'>
                     <input type='hidden' name='id_livre' value='{$livre['id']}'>
-                    <button type='submit' class='btn'>❌ Retirer</button>
+                    <button type='submit' class='btn'> Retirer</button>
                   </form>";
             echo "</div>";
 

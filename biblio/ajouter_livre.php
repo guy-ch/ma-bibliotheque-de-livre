@@ -56,7 +56,7 @@ button:hover{background:#ff6600;}
 </head>
 <body>
 
-<h2 style="text-align:center;">➕ Ajouter un livre</h2>
+<h2 style="text-align:center;"> Ajouter un livre</h2>
 
 <form method="post" enctype="multipart/form-data">
     <input type="text" name="titre" placeholder="Titre" required>
