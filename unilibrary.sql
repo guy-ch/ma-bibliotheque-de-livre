@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 05 jan. 2026 à 08:07
+-- Généré le : sam. 10 jan. 2026 à 14:50
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `unilibrary`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mot_de_passe` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`id`, `nom`, `email`, `mot_de_passe`) VALUES
+(2, 'Admin', 'admin@unilibrary.com', '$2y$10$.it.ZpGqv8FJBZQb3xFl2uQ/tj/sJ/2vWK0n7zOTQGA20SfrZ/op.');
 
 -- --------------------------------------------------------
 
@@ -61,7 +81,10 @@ CREATE TABLE `lecteurs` (
 
 INSERT INTO `lecteurs` (`id`, `nom`, `prenom`, `email`) VALUES
 (2, 'aziada', 'koffi guy', 'guyaziada21@gmail.com'),
-(4, 'aziada', 'guy', 'guyaziada22@gmail.com');
+(4, 'aziada', 'guy', 'guyaziada22@gmail.com'),
+(5, 'guyaziada', 'guy', 'guyazida23@gmail.com'),
+(6, 'koffi', 'yao', 'exemple@gmail.com'),
+(7, 'rsagujsa', 'tysujs', 'vguvuhiab@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -90,7 +113,9 @@ INSERT INTO `liste_lecture` (`id_livre`, `id_lecteur`, `date_emprunt`, `date_ret
 (10, 4, '2026-01-05', NULL, 'à lire', 1),
 (16, 4, '2026-01-05', NULL, 'à lire', 0),
 (6, 4, '2026-01-05', NULL, 'à lire', 0),
-(2, 4, '2026-01-05', NULL, 'à lire', 0);
+(2, 4, '2026-01-05', NULL, 'à lire', 0),
+(1, 5, '2026-01-05', NULL, 'à lire', 0),
+(15, 7, '2026-01-06', NULL, 'à lire', 1);
 
 -- --------------------------------------------------------
 
@@ -130,12 +155,9 @@ INSERT INTO `livre` (`id`, `titre`, `auteur`, `description`, `maison_edition`, `
 (13, 'Autour de la lune', 'Jules Verne', 'science fiction', 'Hetzel', 1000000, 4, 'autour de la lune.jpg', 'autour de la lune.pdf'),
 (14, 'île mystérieuse', 'Jules Verne', 'science fiction', 'Hetzel', 1500000, 4, 'île mystérieuse.jpg', 'île mystérieuse.pdf'),
 (15, 'La Fin Des Livres', 'Uzanne Octave', 'science fiction', 'Manucius', 5000, 4, 'la fin des livres.jpg', 'la fin des livres.pdf'),
-(16, 'Le Vingtième Siècle: La Vie Électrique', 'Robida Albert', 'science fiction', ': Georges Decaux', 20000, 4, 'le vingtieme siecle.jpg', 'le vingtieme siecle.pdf'),
 (17, 'Voyage au Centre de la Terre', 'Jules Verne', 'science fiction', ': Hetzel', 20000000, 4, 'voyage au centre de la terre.jpg', 'voyage au centre de la terre.pdf'),
-(134, 'Le Vingtième Siècle: La Vie Électrique', 'Robida Albert', 'science fiction', ': Georges Decaux', 20000, 4, 'le vingtieme siecle.jpg', 'le vingtieme siecle.pdf'),
-(135, 'Voyage au Centre de la Terre', 'Jules Verne', 'science fiction', ': Hetzel', 20000000, 4, 'voyage au centre de la terre.jpg', 'voyage au centre de la terre.pdf'),
 (136, 'Le Vingtième Siècle: La Vie Électrique', 'Robida Albert', 'science fiction', ': Georges Decaux', 20000, 4, 'le vingtieme siecle.jpg', 'le vingtieme siecle.pdf'),
-(137, 'Voyage au Centre de la Terre', 'Jules Verne', 'science fiction', ': Hetzel', 20000000, 4, 'voyage au centre de la terre.jpg', 'voyage au centre de la terre.pdf');
+(142, 'une vie d\'adolescent', 'Amoussou Ayetché', 'Résumé : La jeunesse de l\'auteur a été marquée par les histoires d\'amour. Après avoir fait des choix de filles et de stratégies peu recommandables, il fait la connaissance d\'une qu\'il croyait être la bonne. Il n\'arrivera pas non plus à conserver cette relation. Auteur(s) : Je suis électrotechnicien de formation mais un amoureux des lettres. Depuis mon enfance, j\'ai été fasciné par les livres alors je me suis mis à écrire. C\'est mon premier livre.\r\n', '', 2000, 1, 'une vie d\'adolescent.jpg', 'une vie d\'adolescent.pdf');
 
 -- --------------------------------------------------------
 
@@ -161,6 +183,13 @@ INSERT INTO `messages_contact` (`id`, `nom`, `email`, `message`, `date_envoi`) V
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Index pour la table `cathegorie`
@@ -192,6 +221,12 @@ ALTER TABLE `messages_contact`
 --
 
 --
+-- AUTO_INCREMENT pour la table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT pour la table `cathegorie`
 --
 ALTER TABLE `cathegorie`
@@ -201,13 +236,13 @@ ALTER TABLE `cathegorie`
 -- AUTO_INCREMENT pour la table `lecteurs`
 --
 ALTER TABLE `lecteurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `livre`
 --
 ALTER TABLE `livre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT pour la table `messages_contact`
